@@ -1,4 +1,4 @@
-import MyTheme from './configs/theme'
+import Aura from '@primevue/themes/aura'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // eslint-disable-next-line no-undef
@@ -15,19 +15,23 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   eslint: {
     config: {
-      stylistic: true, // <---
+      stylistic: true,
       formatters: true,
     },
   },
   primevue: {
     options: {
-      theme: MyTheme,
+      ripple: true,
+      unstyled: false,
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.dark-mode',
+        },
+      },
     },
-  },
-
-  tailwindcss: {
-    config: {
-      // darkMode: "class",
+    components: {
+      exclude: ['Editor', 'Chart'],
     },
   },
 })
