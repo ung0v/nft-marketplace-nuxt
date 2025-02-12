@@ -2,7 +2,6 @@
 useServerHead({
   htmlAttrs: {
     lang: 'en',
-    // class: "my-app-dark",
   },
 })
 

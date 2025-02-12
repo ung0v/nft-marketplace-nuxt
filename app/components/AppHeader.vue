@@ -1,27 +1,52 @@
 <template>
-  <header class="bg-white dark:bg-gray-800 shadow-md">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-between items-center py-4">
+  <header class="sticky top-0 z-10 bg-white !bg-opacity-75 px-10 backdrop-blur-md dark:bg-surface-900">
+    <div class="mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
         <nuxt-link
           to="/"
-          class="text-2xl font-bold text-gray-800"
+          class="text-2xl font-bold text-gray-800 dark:text-white"
         >NFT Marketplace</nuxt-link>
         <div class="">
           <InputText
+            placeholder="Search collection, nft, user..."
             type="text"
             :v-model="search"
+            class="w-[350px] !rounded-full !px-6 !py-3 !text-sm"
           />
         </div>
-        <div class="space-x-4">
-          <Button @click="toggleColorMode">
-            Toggle Color Mode
-          </Button>
-          <nuxt-link to="/creator-dashboard">Creator Dashboard</nuxt-link>
-          <nuxt-link to="/profile">Profile</nuxt-link>
+        <div class="flex items-center space-x-4">
+          <nuxt-link to="/">
+            <Button
+              label="Collections"
+              variant="text"
+              class="!font-bold"
+              severity="secondary"
+            />
+
+          </nuxt-link>
+          <nuxt-link to="/">
+            <Button
+              label="Sell items"
+              variant="text"
+              class="!font-bold"
+              severity="secondary"
+            />
+
+          </nuxt-link>
+          <Button
+            :icon="colorMode.value === 'light' ? 'pi pi-sun' : 'pi pi-moon'"
+            severity="contrast"
+            variant="text"
+            rounded
+            aria-label="Star"
+            icon-class="text-[22px]"
+            @click="toggleColorMode"
+          />
         </div>
       </div>
     </div>
   </header>
+  <Announce />
 </template>
 
 <script lang="ts" setup>
