@@ -19,6 +19,11 @@ const layout = 'client'
 </script>
 
 <template>
+  <NuxtLoadingIndicator
+    :throttle="0"
+    :height="5"
+  />
+
   <div>
     <NuxtLayout :name="layout">
       <NuxtPage />
