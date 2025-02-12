@@ -11,11 +11,12 @@
             placeholder="Search collection, nft, user..."
             type="text"
             :v-model="search"
-            class="w-[350px] !rounded-full !px-6 !py-3 !text-sm"
+            class="w-[350px] !rounded-full !border-0 !px-6 !py-3 !text-sm"
+            variant="filled"
           />
         </div>
         <div class="flex items-center space-x-4">
-          <nuxt-link to="/">
+          <nuxt-link to="/collections">
             <Button
               label="Collections"
               variant="text"
@@ -46,7 +47,6 @@
       </div>
     </div>
   </header>
-  <Announce />
 </template>
 
 <script lang="ts" setup>

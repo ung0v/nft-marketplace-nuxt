@@ -1,5 +1,6 @@
 <template>
   <div class="relative overflow-hidden pb-20">
+    <Announce />
     <div class="mx-auto md:px-10">
       <div class="container relative mx-auto mb-16 max-w-screen-xl px-8 py-16 md:my-16 md:px-14">
         <div class="absolute right-0 top-0 z-[-1] size-full overflow-hidden">
@@ -295,49 +296,7 @@
           class="py-2"
         >
           <template #item="slotProps">
-            <div
-              class="group relative mx-2 flex h-[240px] cursor-pointer flex-col overflow-hidden rounded-2xl border p-[8px] transition-transform duration-500 hover:-translate-y-2"
-            >
-              <div class="relative max-h-full flex-1">
-                <div class="relative h-full overflow-hidden rounded-2xl">
-                  <NuxtImg
-                    :style="{ objectPosition: 'center' }"
-                    :src="slotProps.data.coverImage || '/snake.png'"
-                    class="pointer-events-none h-0 max-h-full min-h-full w-full select-none object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div class="absolute -bottom-4 left-4">
-                  <div
-                    class="relative aspect-square w-14 overflow-hidden rounded-xl border-2 bg-white transition-transform delay-75 duration-500 group-hover:scale-110"
-                  >
-                    <NuxtImg
-                      :src="slotProps.data.avatar || '/snake.png'"
-                      class="size-full object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="flex justify-between px-4 pb-3 pt-[26px] text-sm">
-                <div>
-                  <div class="flex items-center gap-1">
-                    <div class="truncate font-bold">
-                      {{ slotProps.data.name }}
-                    </div>
-                  </div>
-                  <div class="text-gray-600 dark:text-gray-400">
-                    {{ slotProps.data.itemCount }} items
-                  </div>
-                </div>
-                <div>
-                  <div class="font-bold">
-                    Total volume
-                  </div>
-                  <div class="flex items-center justify-end gap-1 text-gray-600 dark:text-gray-400">
-                    <span>$</span><span>{{ slotProps.data.totalVolume }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CollectionItem :data="slotProps.data" />
           </template>
         </Carousel>
       </div>
