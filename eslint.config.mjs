@@ -1,8 +1,11 @@
-// @ts-check
+// @ts-nocheck
+import vue from 'eslint-plugin-vue'
+import tailwind from 'eslint-plugin-tailwindcss'
 import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
-  // Your custom configs here
+  ...vue.configs['flat/recommended'],
+  ...tailwind.configs['flat/recommended'],
   {
     rules: {
       'no-undef': 1,
