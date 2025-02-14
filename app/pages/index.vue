@@ -89,79 +89,8 @@
               </div>
               <div>
                 <div class="flex items-center gap-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 397.7 311.7"
-                    xml:space="preserve"
-                    height="14"
-                  >
-                    <linearGradient
-                      id="sol_svg__a"
-                      gradientUnits="userSpaceOnUse"
-                      x1="360.879"
-                      y1="351.455"
-                      x2="141.213"
-                      y2="-69.294"
-                      gradientTransform="matrix(1 0 0 -1 0 314)"
-                    >
-                      <stop
-                        offset="0"
-                        style="stop-color: rgb(0, 255, 163);"
-                      />
-                      <stop
-                        offset="1"
-                        style="stop-color: rgb(220, 31, 255);"
-                      />
-                    </linearGradient>
-                    <path
-                      d="M64.6 237.9c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.5c-5.8 0-8.7-7-4.6-11.1l62.7-62.7z"
-                      style="fill: url(&quot;#sol_svg__a&quot;);"
-                    />
-                    <linearGradient
-                      id="sol_svg__b"
-                      gradientUnits="userSpaceOnUse"
-                      x1="264.829"
-                      y1="401.601"
-                      x2="45.163"
-                      y2="-19.148"
-                      gradientTransform="matrix(1 0 0 -1 0 314)"
-                    >
-                      <stop
-                        offset="0"
-                        style="stop-color: rgb(0, 255, 163);"
-                      />
-                      <stop
-                        offset="1"
-                        style="stop-color: rgb(220, 31, 255);"
-                      />
-                    </linearGradient>
-                    <path
-                      d="M64.6 3.8C67.1 1.4 70.4 0 73.8 0h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.5c-5.8 0-8.7-7-4.6-11.1L64.6 3.8z"
-                      style="fill: url(&quot;#sol_svg__b&quot;);"
-                    />
-                    <linearGradient
-                      id="sol_svg__c"
-                      gradientUnits="userSpaceOnUse"
-                      x1="312.548"
-                      y1="376.688"
-                      x2="92.882"
-                      y2="-44.061"
-                      gradientTransform="matrix(1 0 0 -1 0 314)"
-                    >
-                      <stop
-                        offset="0"
-                        style="stop-color: rgb(0, 255, 163);"
-                      />
-                      <stop
-                        offset="1"
-                        style="stop-color: rgb(220, 31, 255);"
-                      />
-                    </linearGradient>
-                    <path
-                      d="M333.1 120.1c-2.4-2.4-5.7-3.8-9.2-3.8H6.5c-5.8 0-8.7 7-4.6 11.1l62.7 62.7c2.4 2.4 5.7 3.8 9.2 3.8h317.4c5.8 0 8.7-7 4.6-11.1l-62.7-62.7z"
-                      style="fill: url(&quot;#sol_svg__c&quot;);"
-                    />
-                  </svg><span class="font-bold">0.9</span>
+                  <SolanaIcon />
+                  <span class="font-bold">0.9</span>
                 </div>
               </div>
             </div>
@@ -190,7 +119,7 @@
             <div class="flex items-center gap-x-4">
               <span class="font-bold">{{ index + 1 }}</span>
               <NuxtLink
-                to="/collection"
+                to="/collections"
                 :title="collection.name"
               >
                 <div class="flex items-center gap-x-2">
@@ -202,7 +131,7 @@
                   />
                   <div>
                     <div class="line-clamp-1 font-semibold">{{ collection.name }}</div>
-                    <div class="text-sm text-gray-500">Floor ${{ collection.floorPrice }}</div>
+                    <div class="flex items-center gap-x-1 text-sm text-gray-500">Floor <SolanaIcon />{{ collection.floorPrice }}</div>
                   </div>
                 </div>
               </nuxtlink>
@@ -217,8 +146,8 @@
               >
                 {{ collection.percentChange }}%
               </div>
-              <div class="text-sm text-gray-500">
-                Vol ${{ collection.volume }}
+              <div class="flex items-center gap-x-1 text-sm text-gray-500">
+                Vol <SolanaIcon />{{ collection.volume }}
               </div>
             </div>
           </div>
@@ -237,49 +166,7 @@
           class="py-2"
         >
           <template #item="slotProps">
-            <div
-              class="group relative mx-2 flex h-[240px] cursor-pointer flex-col overflow-hidden rounded-2xl border p-[8px] transition-transform duration-500 hover:-translate-y-2"
-            >
-              <div class="relative max-h-full flex-1">
-                <div class="relative h-full overflow-hidden rounded-2xl">
-                  <NuxtImg
-                    :style="{ objectPosition: 'center' }"
-                    :src="slotProps.data.coverImage || '/snake.png'"
-                    class="pointer-events-none h-0 max-h-full min-h-full w-full select-none object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div class="absolute -bottom-4 left-4">
-                  <div
-                    class="relative aspect-square w-14 overflow-hidden rounded-xl border-2 bg-white transition-transform delay-75 duration-500 group-hover:scale-110"
-                  >
-                    <NuxtImg
-                      :src="slotProps.data.avatar || '/snake.png'"
-                      class="size-full object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="flex justify-between px-4 pb-3 pt-[26px] text-sm">
-                <div>
-                  <div class="flex items-center gap-1">
-                    <div class="truncate font-bold">
-                      {{ slotProps.data.name }}
-                    </div>
-                  </div>
-                  <div class="text-gray-600 dark:text-gray-400">
-                    {{ slotProps.data.itemCount }} items
-                  </div>
-                </div>
-                <div>
-                  <div class="font-bold">
-                    Total volume
-                  </div>
-                  <div class="flex items-center justify-end gap-1 text-gray-600 dark:text-gray-400">
-                    <span>$</span><span>{{ slotProps.data.totalVolume }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CollectionItem :data="slotProps.data" />
           </template>
         </Carousel>
       </div>
@@ -305,6 +192,8 @@
 </template>
 
 <script lang="ts" setup>
+import { SolanaIcon } from '#components'
+
 definePageMeta({
   colorMode: 'light',
 })

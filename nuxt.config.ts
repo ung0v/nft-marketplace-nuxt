@@ -10,7 +10,12 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
     '@nuxt/image',
   ],
-
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
   devtools: { enabled: false },
   css: ['primeicons/primeicons.css', '~/assets/css/tailwind.css', '~/assets/css/main.css'],
   colorMode: {

@@ -37,7 +37,7 @@
           Total volume
         </div>
         <div class="flex items-center justify-end gap-1 text-gray-600 dark:text-gray-400">
-          <span>$</span><span>{{ props.data.totalVolume }}</span>
+          <SolanaIcon /><span>{{ props.data.totalVolume.toLocaleString() }}</span>
         </div>
       </div>
     </div>
