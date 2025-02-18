@@ -1,5 +1,6 @@
 <template>
-  <div
+  <nuxt-link
+    :to="`/collections/${props.data.name}`"
     class="group relative mx-2 flex h-[240px] cursor-pointer flex-col overflow-hidden rounded-2xl border p-[8px] transition-transform duration-500 hover:-translate-y-2"
   >
     <div class="relative max-h-full flex-1">
@@ -41,7 +42,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <script lang="ts" setup>

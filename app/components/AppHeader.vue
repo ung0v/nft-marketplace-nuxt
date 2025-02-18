@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 z-10 bg-white !bg-opacity-75 px-10 backdrop-blur-md dark:bg-surface-900">
+  <header class="sticky top-0 z-[99] bg-white !bg-opacity-75 px-10 backdrop-blur-md dark:bg-surface-900">
     <div class="mx-auto px-4">
       <div class="flex items-center justify-between py-4">
         <nuxt-link
