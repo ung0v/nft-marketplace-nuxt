@@ -18,9 +18,12 @@
     </div>
     <div class="px-4 py-3">
       <div class="mb-2 flex items-center justify-between gap-1">
-        <h3 class="line-clamp-1 break-all text-base">
+        <NuxtLink
+          :to="`/nft/${props.data.id}`"
+          class="line-clamp-1 break-all text-base"
+        >
           {{ props.data.name }}
-        </h3>
+        </NuxtLink>
         <span class="flex items-center font-bold">
           <SolanaIcon class="mr-1" />
           {{ props.data.price }}
