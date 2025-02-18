@@ -6,8 +6,11 @@
       </span>
       {{ nftItems.length || 0 }} items
     </div>
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      <NFTDetails
+    <div
+      class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      :class="{ '!grid-cols-4': props.viewMode === 'table', '!grid-cols-5': props.viewMode === 'grid' }"
+    >
+      <NFTCard
         v-for="nft in nftItems"
         :key="nft.id"
         :data="nft"
@@ -17,21 +20,11 @@
 </template>
 
 <script lang="ts" setup>
-interface Attribute {
-  trait_type: string
-  value: string
+type Props = {
+  viewMode: 'table' | 'grid'
 }
 
-interface NFTMetadata {
-  id: number // Added id field
-  name: string
-  description: string
-  image: string // Usually IPFS or Arweave URL
-  external_url?: string
-  attributes: Attribute[]
-  price: number // Added price field
-}
-
+const props = defineProps<Props>()
 const _cartList = useState<NFTMetadata[]>('cartList', () => [])
 
 const nftItems = ref<NFTMetadata[]>([

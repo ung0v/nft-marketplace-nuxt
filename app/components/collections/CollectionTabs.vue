@@ -22,6 +22,43 @@
         <Tab value="2">
           Activity
         </Tab>
+        <div class="ml-auto flex items-center p-4">
+          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-4">
+              <div>🧹 Sweep</div>
+              <Slider
+                v-model="sweep"
+                class="w-40"
+              />
+              <span class="font-bold">
+                (2)
+              </span>
+            </div>
+            <div>
+              <Select
+                :default-value="options[0]"
+                :options="options"
+                option-label="name"
+                placeholder="Select a City"
+                class="w-full md:w-56"
+              />
+            </div>
+            <div class="flex items-center gap-4">
+              <ButtonGroup>
+                <Button
+                  icon="pi pi-table"
+                  :outlined="viewMode === 'grid'"
+                  @click="handleViewMode('table')"
+                />
+                <Button
+                  icon="pi pi-th-large"
+                  :outlined="viewMode === 'table'"
+                  @click="handleViewMode('grid')"
+                />
+              </ButtonGroup>
+            </div>
+          </div>
+        </div>
       </TabList>
       <TabPanels
         class="!p-0"
@@ -38,7 +75,13 @@
               <CollectionDetailFilters />
             </div>
             <div class="m-0 flex-1 px-4">
-              <CollectionDetailList />
+              <CollectionDetailList :view-mode="viewMode" />
+            </div>
+            <div
+              v-if="cartList?.length > 0"
+              class="sticky top-0 pt-4"
+            >
+              <CollectionCheckout />
             </div>
           </div>
         </TabPanel>
@@ -56,7 +99,20 @@
 </template>
 
 <script lang="ts" setup>
+type ViewModeType = 'table' | 'grid'
+
+const cartList = useState<NFTMetadata[]>('cartList')
+const viewMode = ref<ViewModeType>('table')
 const tabVal = ref('0')
+const sweep = ref(0)
+const options = [
+  { name: 'Price low to high', value: 'lowtohigh' },
+  { name: 'Price high to low', value: 'hightolow' },
+]
+
+const handleViewMode = (newViewMode: ViewModeType) => {
+  viewMode.value = newViewMode
+}
 
 const isShowFilter = ref(true)
 

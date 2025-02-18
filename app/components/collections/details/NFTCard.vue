@@ -1,14 +1,14 @@
 <template>
   <div
     class="group relative inline-flex cursor-pointer flex-col rounded-2xl border hover:bg-gray-100"
-    @click="handleAddToCart(props.data)"
+    @click="handleAddToCart"
   >
     <Checkbox
-      :name="props.data.name"
       class="!absolute right-2 top-2"
       size="large"
       binary
-      :model-value="checked"
+      :model-value="isInCart"
+      @click.stop
     />
     <div class="relative aspect-square overflow-hidden">
       <NuxtImg
@@ -17,8 +17,8 @@
       />
     </div>
     <div class="px-4 py-3">
-      <div class="mb-2 flex items-center justify-between">
-        <h3 class="text-base">
+      <div class="mb-2 flex items-center justify-between gap-1">
+        <h3 class="line-clamp-1 break-all text-base">
           {{ props.data.name }}
         </h3>
         <span class="flex items-center font-bold">
@@ -33,13 +33,14 @@
           label="Connect"
           style="display:none"
           class="!p-0 group-hover:!flex"
+          @click.stop="connect"
         />
         <Button
           icon="pi pi-ellipsis-h"
           icon-class="!text-lg"
           variant="text"
           class="ml-auto !size-10"
-          @click="toggle"
+          @click.stop="toggle"
         />
         <Menu
           id="overlay_menu"
@@ -73,8 +74,6 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const checked = ref(false)
-
 const menu = ref()
 const items = ref([
 
@@ -97,25 +96,27 @@ const items = ref([
 ],
 )
 
-const toggle = (event: unknown) => {
+const toggle = (event: MouseEvent) => {
   menu.value.toggle(event)
+}
+
+const connect = (_event: MouseEvent) => {
+  // TODO
 }
 
 const cartList = useState<NFTMetadata[]>('cartList')
 
-const onUpdate = (value: boolean) => {
-  checked.value = !value
-  console.log(checked.value)
-}
+const isInCart = computed(() => {
+  return cartList.value.some(item => item.id === props.data.id)
+})
 
-const handleAddToCart = (data: NFTMetadata) => {
-  if (!checked.value) {
-    cartList.value.push(data)
+const handleAddToCart = () => {
+  if (!isInCart.value) {
+    cartList.value.push(props.data)
   }
   else {
-    cartList.value = cartList.value.filter(item => item.id !== data.id)
+    cartList.value = cartList.value.filter(item => item.id !== props.data.id)
   }
-  onUpdate(checked.value)
 }
 </script>
 

@@ -16,6 +16,9 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  imports: {
+    dirs: ['~/types'],
+  },
   devtools: { enabled: false },
   css: ['primeicons/primeicons.css', '~/assets/css/tailwind.css', '~/assets/css/main.css'],
   colorMode: {
@@ -39,7 +42,7 @@ export default defineNuxtConfig({
   },
   primevue: {
     options: {
-      ripple: true,
+      // ripple: true, // disable ripple
       unstyled: false,
       theme: {
         preset: Aura,
