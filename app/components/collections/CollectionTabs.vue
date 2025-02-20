@@ -4,7 +4,7 @@
       v-model:value="tabVal"
       class="flex-1"
     >
-      <TabList>
+      <TabList class="sticky top-20 z-50">
         <Tab
           value="0"
           class="!border-0 !border-none !text-[unset]"
@@ -79,7 +79,7 @@
             </div>
             <div
               v-if="cartList?.length > 0"
-              class="sticky top-0 pt-4"
+              class="py-4"
             >
               <CollectionCheckout />
             </div>

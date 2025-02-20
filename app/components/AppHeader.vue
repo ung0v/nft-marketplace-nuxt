@@ -1,7 +1,7 @@
 <template>
-  <header class="sticky top-0 z-[99] bg-white !bg-opacity-75 px-10 backdrop-blur-md dark:bg-surface-900">
-    <div class="mx-auto px-4">
-      <div class="flex items-center justify-between py-4">
+  <header class="sticky top-0 z-[99] h-20 bg-white !bg-opacity-75 px-10 backdrop-blur-md dark:bg-surface-900">
+    <div class="mx-auto flex size-full px-4">
+      <div class="flex h-full flex-1 items-center justify-between py-4">
         <nuxt-link
           to="/"
           class="text-2xl font-bold text-gray-800 dark:text-white"

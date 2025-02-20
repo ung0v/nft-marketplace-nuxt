@@ -1,5 +1,5 @@
 <template>
-  <Card class="w-[350px] overflow-hidden border p-8 !shadow-none">
+  <Card class="sticky top-[176px] w-[350px] overflow-hidden border p-8 !shadow-none">
     <template #header />
     <template #title>
       <div class="mb-8 flex items-center justify-between">
