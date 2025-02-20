@@ -84,7 +84,7 @@ const handleRemoveFromCart = (id: number) => {
 }
 </script>
 
-<style>
+<style scoped>
 .p-card-body {
   @apply p-0 gap-0;
 }

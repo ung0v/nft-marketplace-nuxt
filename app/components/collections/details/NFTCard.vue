@@ -128,7 +128,7 @@ const handleAddToCart = () => {
 }
 </script>
 
-<style>
+<style scoped>
 .p-checkbox-box {
   @apply !size-10 !rounded-lg;
   svg {

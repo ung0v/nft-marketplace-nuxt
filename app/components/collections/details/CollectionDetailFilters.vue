@@ -162,7 +162,7 @@ const nftFilters = ref([
 ])
 </script>
 
-<style>
+<style scoped>
 .p-accordionheader {
   @apply !px-4
 }

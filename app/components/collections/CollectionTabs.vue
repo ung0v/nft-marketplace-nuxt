@@ -4,7 +4,7 @@
       v-model:value="tabVal"
       class="flex-1"
     >
-      <TabList class="sticky top-20 z-50">
+      <TabList class="!sticky top-20 z-50">
         <Tab
           value="0"
           class="!border-0 !border-none !text-[unset]"
@@ -121,7 +121,7 @@ const toggleFilter = () => {
 }
 </script>
 
-<style>
+<style scoped>
 .p-tablist-active-bar {
   width: 0 !important;
 }
