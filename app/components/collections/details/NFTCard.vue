@@ -1,19 +1,24 @@
 <template>
   <div
-    class="group relative inline-flex cursor-pointer flex-col rounded-2xl border hover:bg-gray-100"
+    class="group relative inline-flex cursor-pointer flex-col overflow-hidden rounded-2xl border hover:bg-gray-100"
     @click="handleAddToCart"
   >
     <Checkbox
-      class="!absolute right-2 top-2"
+      style="display: none;"
+      class="!absolute right-2 top-2 z-50 !size-10 opacity-100 group-hover:!inline-flex"
+      :class="{ '!inline-flex': isInCart }"
       size="large"
       binary
       :model-value="isInCart"
       @click.stop
     />
-    <div class="relative aspect-square overflow-hidden">
+    <div
+      class="relative aspect-square overflow-hidden rounded-2xl transition-all"
+      :class="{ 'm-2 border-4 border-primary': isInCart }"
+    >
       <NuxtImg
         src="/snake.png"
-        class="w-full rounded-2xl object-cover transition-transform duration-300 group-hover:scale-105 group-hover:opacity-60"
+        class="w-full object-cover transition-transform duration-300 group-hover:scale-105 group-hover:opacity-60"
       />
     </div>
     <div class="px-4 py-3">
@@ -124,5 +129,10 @@ const handleAddToCart = () => {
 </script>
 
 <style>
-
+.p-checkbox-box {
+  @apply !size-10 !rounded-lg;
+  svg {
+    @apply !size-8;
+  }
+}
 </style>

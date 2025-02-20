@@ -138,13 +138,13 @@
           Activities
         </AccordionHeader>
         <AccordionContent class="!p-0 !transition-none">
-          <div class="p-4 ">
+          <div class="p-4">
             <DataTable
               :value="activites"
               scrollable
               :pt="{
                 table: { style: 'min-width: 50rem' },
-                bodyrow: ({ props }) => ({
+                bodyRow: ({ props }) => ({
                   class: '!text-center',
                 }),
               }"
