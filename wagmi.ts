@@ -1,11 +1,10 @@
 import { http, cookieStorage, createConfig, createStorage } from '@wagmi/vue'
-import { mainnet, optimism, sepolia } from '@wagmi/vue/chains'
-import { injected, metaMask } from '@wagmi/vue/connectors'
+import { mainnet, sepolia } from '@wagmi/vue/chains'
+import { metaMask } from '@wagmi/vue/connectors'
 
 export const config = createConfig({
-  chains: [mainnet, sepolia, optimism],
+  chains: [mainnet, sepolia],
   connectors: [
-    injected(),
     metaMask(),
   ],
   storage: createStorage({
@@ -15,7 +14,6 @@ export const config = createConfig({
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http(),
-    [optimism.id]: http(),
   },
 })
 

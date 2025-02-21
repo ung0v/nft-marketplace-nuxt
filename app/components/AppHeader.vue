@@ -25,7 +25,7 @@
             />
 
           </nuxt-link>
-          <nuxt-link to="/">
+          <nuxt-link to="/list-nft">
             <Button
               label="Sell items"
               variant="text"
@@ -45,7 +45,6 @@
           />
 
           <Button
-
             v-if="!status || status === 'disconnected'"
             label="Connect Wallet"
             severity="contrast"
@@ -55,8 +54,17 @@
           <div v-else-if="status === 'connecting'">
             Connecting...
           </div>
-          <div v-else-if="status === 'connected'">
-            {{ formatAddress(address) }}
+          <div
+            v-else-if="status === 'connected'"
+            class="flex items-center gap-2"
+          >
+            {{ formatAddress(address as string) }}
+            <Button
+
+              label="Disconnect Wallet"
+              severity="contrast"
+              @click="handleDisconnectWallet"
+            />
           </div>
         </div>
       </div>
@@ -65,7 +73,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useAccount, useDisconnect, injected, useConnect } from '@wagmi/vue'
+import { injected, useAccount, useConnect, useDisconnect } from '@wagmi/vue'
 
 const search = ref('')
 const colorMode = useColorMode()
@@ -73,13 +81,16 @@ const toggleColorMode = () => {
   colorMode.value = colorMode.value === 'light' ? 'dark' : 'light'
 }
 
-const { address, chainId, status } = useAccount()
+const { address, status } = useAccount()
 const { disconnect } = useDisconnect()
 const { connect } = useConnect()
 
 const handleConnectWallet = () => {
-  console.log('CONNECTZING.')
   connect({ connector: injected() })
+}
+
+const handleDisconnectWallet = () => {
+  disconnect()
 }
 </script>
 
