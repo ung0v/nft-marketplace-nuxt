@@ -43,6 +43,21 @@
             icon-class="text-[22px]"
             @click="toggleColorMode"
           />
+
+          <Button
+
+            v-if="!status || status === 'disconnected'"
+            label="Connect Wallet"
+            severity="contrast"
+            @click="handleConnectWallet"
+          />
+
+          <div v-else-if="status === 'connecting'">
+            Connecting...
+          </div>
+          <div v-else-if="status === 'connected'">
+            {{ formatAddress(address) }}
+          </div>
         </div>
       </div>
     </div>
@@ -50,10 +65,21 @@
 </template>
 
 <script lang="ts" setup>
+import { useAccount, useDisconnect, injected, useConnect } from '@wagmi/vue'
+
 const search = ref('')
 const colorMode = useColorMode()
 const toggleColorMode = () => {
   colorMode.value = colorMode.value === 'light' ? 'dark' : 'light'
+}
+
+const { address, chainId, status } = useAccount()
+const { disconnect } = useDisconnect()
+const { connect } = useConnect()
+
+const handleConnectWallet = () => {
+  console.log('CONNECTZING.')
+  connect({ connector: injected() })
 }
 </script>
 

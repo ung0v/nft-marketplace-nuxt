@@ -198,11 +198,6 @@ const data = ref({
   ],
 })
 
-const formatAddress = (address: string) => {
-  if (!address || address.length < 6) return address
-  return `${address.slice(0, 6)}...${address.slice(-3)}`
-}
-
 const nftDetails = ref({
   tokenAddress: {
     label: 'Token Address',
