@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@primevue/nuxt-module',
     '@nuxt/image',
+    '@nuxt/test-utils/module',
   ],
   components: [
     {
